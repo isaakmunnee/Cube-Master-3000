@@ -36,13 +36,24 @@ namespace Cube_Master_3000
         public float z;
 
         /// <summary>
-        /// The size of the cube in volume units (units^3)
+        /// The capacity of the cube in volume units (units^3)
         /// </summary>
-        public float size
+        public float volume
         {
             get
             {
                 return x * y * z;
+            }
+        }
+
+        /// <summary>
+        /// Returns the surface area of the cube.
+        /// </summary>
+        public float surfaceArea
+        {
+            get
+            {
+                return ((2 * zFace.size) + (2 * xFace.size) + (2 * yFace.size));
             }
         }
 
@@ -59,8 +70,14 @@ namespace Cube_Master_3000
         /// </summary>
         public Side yFace;
 
+        /// <summary>
+        /// This is a subclass that basically contains information about sides of the 3D cube
+        /// </summary>
         public class Side
         {
+            /// <summary>
+            /// are you trying to tear this family apart or what
+            /// </summary>
             public Side() { }
 
             /// <summary>
@@ -77,6 +94,9 @@ namespace Cube_Master_3000
             public float x;
             public float y;
 
+            /// <summary>
+            /// The size of the side in area units (units^2)
+            /// </summary>
             public float size
             {
                 get
