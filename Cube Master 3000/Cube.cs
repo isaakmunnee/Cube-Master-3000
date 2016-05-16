@@ -8,7 +8,9 @@ namespace Cube_Master_3000
 {
     public class Cube
     {
-
+        /// <summary>
+        /// Don't use this twat.
+        /// </summary>
         public Cube() { }
 
         /// <summary>
@@ -22,6 +24,11 @@ namespace Cube_Master_3000
             x = p1;
             y = p2;
             z = p3;
+
+            xFace = new Side(y, z);
+            yFace = new Side(x, z);
+            zFace = new Side(x, y);
+
         }
 
         public float x;
@@ -39,12 +46,44 @@ namespace Cube_Master_3000
             }
         }
 
+        /// <summary>
+        /// Side X*Y (perpendicular to the z axis)
+        /// </summary>
+        public Side zFace;
+        /// <summary>
+        /// Side Y*Z (perpendicular to the x axis)
+        /// </summary>
+        public Side xFace;
+        /// <summary>
+        /// Side X*Z (perpendicular to the y axis);
+        /// </summary>
+        public Side yFace;
+
         public class Side
         {
             public Side() { }
 
+            /// <summary>
+            /// Makes a new side (x,y)
+            /// </summary>
+            /// <param name="p1">X value</param>
+            /// <param name="p2">Y value</param>
+            public Side(float p1, float p2)
+            {
+                x = p1;
+                y = p2;
+            }
+
             public float x;
             public float y;
+
+            public float size
+            {
+                get
+                {
+                    return x * y;
+                }
+            }
         }
     }
 }
